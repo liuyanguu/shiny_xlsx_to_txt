@@ -1,0 +1,64 @@
+
+' Read in txt file as input
+
+Sub FindAndReplaceMultiItems()
+
+Dim strFilename As String
+strFilename = "D:\OneDrive\Roxy_Task\Index_EN.txt"
+Dim iFile As Integer: iFile = FreeFile
+Open strFilename For Input As #iFile
+Dim strFileContentA As String
+strFileContentA = Input(LOF(iFile), iFile)
+Close #iFile
+
+
+'Create Stream object
+Set fileStream = CreateObject("ADODB.Stream")
+'Specify stream type – we want To save text/string data.
+fileStream.Type = 2
+
+'Specify charset For the source text data.
+fileStream.Charset = "UTF-8"
+
+'Open the stream And write binary data To the object
+fileStream.Open
+fileStream.LoadFromFile "D:\OneDrive\Roxy_Task\Index_ZH.txt"
+
+LstStr = fileStream.ReadText
+
+
+'Update by ExtendOffice 2018/10/25
+'The replacing process
+
+    Dim xFindArr, xReplaceArr
+    Dim I As Long
+    Application.ScreenUpdating = False
+'   xFind = InputBox("Enter items to be found here,seperated by comma: ", "Kutools for Word")
+'   xReplace = InputBox("Enter new items here, seperated by comma: ", "Kutools for Word")
+    xFindArr = Split(strFileContentA, ";")
+    MsgBox "The old strings are " & strFileContentA, vbInformation
+
+    xReplaceArr = Split(LstStr, ";")
+    MsgBox "The new ones are" & LstStr, vbInformation
+    
+    If UBound(xFindArr) <> UBound(xReplaceArr) Then
+        MsgBox "Find and replace characters must be equal.", vbInformation, "Kutools for Word"
+        Exit Sub
+    End If
+    
+    For I = 0 To UBound(xFindArr)
+        Selection.HomeKey Unit:=wdStory
+        With Selection.Find
+            .ClearFormatting
+            .Replacement.ClearFormatting
+            .Text = xFindArr(I)
+            .Replacement.Text = xReplaceArr(I)
+            .Format = False
+            .MatchWholeWord = False
+        End With
+        Selection.Find.Execute Replace:=wdReplaceAll
+    Next
+    Application.ScreenUpdating = True
+    
+End Sub
+
