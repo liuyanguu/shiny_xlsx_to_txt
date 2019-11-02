@@ -5,6 +5,8 @@ account: liuyanguu
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 1385879
-bundleId: 2541111
+bundleId: 2559366
 url: https://liuyanguu.shinyapps.io/shiny_xlsx_to_txt/
-when: 1572194887.18027
+when: 1572713494.47731
+asMultiple: FALSE
+asStatic: FALSE

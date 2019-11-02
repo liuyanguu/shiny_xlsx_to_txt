@@ -13,8 +13,8 @@ ui = fluidPage(
       titlePanel("xlsx to txt"),
       sidebarLayout(
         sidebarPanel(
-          helpText("Design specificly to reformat 1 or 2 columns xlsx file of ZH and EN into two txt files (seperated by semicolon)."),
-          helpText("Either: one column of ZH, one column of EN (order doesn't matter); or all in one column, one row of EN, one row of ZH."),
+          helpText("This app was designed specificly to reformat a 1 or 2-column xlsx file of ZH and EN into two txt files (seperated by semicolon)."),
+          helpText("Either ZH and EN in two seperate columns (autodetected), or all in one column: one row of EN and one row of ZH."),
           h3(strong("Upload xlsx file")),
           fileInput('file_input', label = "",  accept = c(".xlsx")),
           br(), br(),
@@ -24,6 +24,7 @@ ui = fluidPage(
           
           # after click run, optional to download
           conditionalPanel("input.click_run",
+            p(strong("Download Results")),                           
             downloadButton("click_downloadEN", "Download EN txt"),
             br(),
             downloadButton("click_downloadZH", "Download ZH txt"),
