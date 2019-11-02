@@ -1,5 +1,7 @@
-
-' Read in txt file as input
+'Remember to revise: 
+'strFilename = "D:\OneDrive\Roxy_Task\Index_EN.txt"
+'and
+'fileStream.LoadFromFile "D:\OneDrive\Roxy_Task\Index_ZH.txt"
 
 Sub FindAndReplaceMultiItems()
 

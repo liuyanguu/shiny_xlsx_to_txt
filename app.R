@@ -1,5 +1,6 @@
 library("shiny")
 library("readxl")
+library("cld2")
 library("data.table")
 library("DT")
 library("here")
@@ -7,7 +8,7 @@ library("here")
 options(shiny.maxRequestSize = -1)
 source("R/run.data.R")
 tabPanel.about <- source("R/about.R")$value
-
+tabPanel.macro <- source("R/Macro.R")$value
 ui = fluidPage(
       titlePanel("xlsx to txt"),
       sidebarLayout(
@@ -25,7 +26,11 @@ ui = fluidPage(
           conditionalPanel("input.click_run",
             downloadButton("click_downloadEN", "Download EN txt"),
             br(),
-            downloadButton("click_downloadZH", "Download ZH txt")
+            downloadButton("click_downloadZH", "Download ZH txt"),
+            br(),
+            br(),br(),
+            p(strong("Remember to change directory in the Macro")),
+            downloadButton("click_downloadMacro", "Download Macro Code")
           )
         ),
         mainPanel(
@@ -41,6 +46,7 @@ ui = fluidPage(
               br(), 
               DT::dataTableOutput('table2')),
             
+ 
             # The "About" panel
             tabPanel.about()
           )
@@ -117,6 +123,14 @@ ui = fluidPage(
         content <- function(file) {
           file.copy("Index_ZH.txt", file)
         }
+      )
+      
+      output$click_downloadMacro <- downloadHandler(
+        filename <- function(){"Macro_Code.txt"},
+        content <- function(file) {
+          file.copy("Macro code.txt", file)
+        }
+        
       )
 }
 
