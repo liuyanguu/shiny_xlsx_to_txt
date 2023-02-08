@@ -26,7 +26,7 @@ function() {
            
            
            br(), br(),
-           p("Last updated: Oct, 2019",
+           p("Developed: Oct, 2019, Last updated: Feb, 2023",
              br("Created in ",
                 a("R", 
                   href = "http://www.r-project.org/", target = "_blank"),

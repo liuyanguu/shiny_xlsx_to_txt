@@ -4,6 +4,7 @@ library("cld2")
 library("data.table")
 library("DT")
 library("here")
+library("shinyjs")  # for reset app
 
 options(shiny.maxRequestSize = -1)
 source("R/run.data.R")
@@ -13,6 +14,9 @@ ui = fluidPage(
       titlePanel("xlsx to txt"),
       sidebarLayout(
         sidebarPanel(
+          
+          useShinyjs(),
+          
           helpText("This app was designed specificly to reformat a 1 or 2-column xlsx file of ZH and EN into two txt files (seperated by semicolon)."),
           helpText("Either ZH and EN in two seperate columns (autodetected), or all in one column: one row of EN and one row of ZH."),
           helpText("It also does some light data cleaning: remove duplicated rows and sort by the length of EN character from long to short."),
@@ -33,7 +37,10 @@ ui = fluidPage(
             br(),br(),
             p(strong("Remember to change directory in the Macro")),
             downloadButton("click_downloadMacro", "Download Macro Code")
-          )
+          ),
+          br(), br(),
+          actionButton("click_reset",  ("Reset App"), width = '200px')
+          
         ),
         mainPanel(
           tabsetPanel(
@@ -59,6 +66,14 @@ ui = fluidPage(
     
     
  server = function(input, output){
+   # Reset session 
+   observe({
+     if (input$click_reset) {
+       refresh();
+     }
+   })  
+   
+   
       output$show_buttom <- renderUI({
         if (is.null(input$file_input)) return()
         actionButton("click_run",  "Produce files")
