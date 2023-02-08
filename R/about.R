@@ -5,14 +5,12 @@
 ##
 function() {
   tabPanel("About",
-           p("This app is developed and maintained by Roxy Yuan,"),
-           p("Technical support: Yang Liu,",
-             "For any questions, feedback or suggestions, please contact us at lyhello@gmail.com;",
-             "Github page: https://github.com/liuyanguu"),
-           
+           p("This app is maintained by Roxy Yuan,"),
+
            br(), br(),
            strong("Disclaimer"),
            p("The content in the app doesn't represent any official opinion from any organization."),
+           br(), br(),
            p("UNAUTHORIZED PERSON IS NOT ALLOWED \n
              TO USE, COPY, MODIFY, MERGE, PUBLISH, DISTRIBUTE, SUBLICENSE, AND/OR SELL\n
              COPIES OF THE SOFTWARE.\n",
