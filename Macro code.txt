@@ -37,10 +37,10 @@ LstStr = fileStream.ReadText
     Application.ScreenUpdating = False
 '   xFind = InputBox("Enter items to be found here,seperated by comma: ", "Kutools for Word")
 '   xReplace = InputBox("Enter new items here, seperated by comma: ", "Kutools for Word")
-    xFindArr = Split(strFileContentA, ";")
+    xFindArr = Split(strFileContentA, "#")
     MsgBox "The old strings are " & strFileContentA, vbInformation
 
-    xReplaceArr = Split(LstStr, ";")
+    xReplaceArr = Split(LstStr, "#")
     MsgBox "The new ones are" & LstStr, vbInformation
     
     If UBound(xFindArr) <> UBound(xReplaceArr) Then

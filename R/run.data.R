@@ -43,7 +43,7 @@ prepare.data <- function(dt1){
 
   # create txt files --------------------------------------------------------
 write.to.txt <- function(data, x, filename = NULL){
-    string0 <- paste(data[[x]], collapse = ";")
+    string0 <- paste(data[[x]], collapse = "#")
     if (is.null(filename)) {
       file_name0 <- paste0("Index_", toupper(x), ".txt")
     } else {

@@ -5,9 +5,8 @@ account: liuyanguu
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 1385879
-bundleId: 6824445
+bundleId: 8300797
 url: https://liuyanguu.shinyapps.io/shiny_xlsx_to_txt/
-when: 1675879239.9602
-lastSyncTime: 1675879239.96021
 asMultiple: FALSE
 asStatic: FALSE
+ignoredFiles: Index_EN.txt|Index_ZH.txt|SampleEN.txt|SampleZH.txt|test/1703714 index EN & CN.xlsx|test/20240226 Side by side_final removed dupes updated fy.xlsx|test/Test.docx
